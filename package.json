@@ -1,0 +1,27 @@
+{
+  "name": "walkable",
+  "version": "1.0.0",
+  "description": "Easy 2D polygonal pathfinding",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/implicit-invocation/walkable.git"
+  },
+  "keywords": [
+    "pathfinding",
+    "2D",
+    "polygon"
+  ],
+  "author": "implicit-invocation",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/implicit-invocation/walkable/issues"
+  },
+  "homepage": "https://github.com/implicit-invocation/walkable#readme",
+  "dependencies": {
+    "hxdaedalus-js": "^1.0.1"
+  }
+}
