@@ -20,15 +20,12 @@ function Walkable(width, height) {
 
 Walkable.prototype.addRect = function(w, h, x, y) {
   var obj = new DaedalusObject();
-  obj.set_coordinates([
-    0, 0, 0, h,
-    0, h, w, h,
-    w, h, w, 0,
-    w, 0, 0, 0
-  ]);
+  obj.set_coordinates([0, 0, 0, h, 0, h, w, h, w, h, w, 0, w, 0, 0, 0]);
   obj.set_x(x);
   obj.set_y(y);
   this.mesh.insertObject(obj);
+
+  return obj;
 };
 
 Walkable.prototype.addPolygon = function(vertices, x, y) {
@@ -39,7 +36,8 @@ Walkable.prototype.addPolygon = function(vertices, x, y) {
   var obj = new DaedalusObject();
   var coords = [];
 
-  var prevX = vertices[vertices.length - 2], prevY = vertices[vertices.length - 1];
+  var prevX = vertices[vertices.length - 2],
+    prevY = vertices[vertices.length - 1];
 
   for (var i = 0; i < vertices.length; i += 2) {
     var x = vertices[i], y = vertices[i + 1];
@@ -52,6 +50,8 @@ Walkable.prototype.addPolygon = function(vertices, x, y) {
   obj.set_x(x || 0);
   obj.set_y(y || 0);
   this.mesh.insertObject(obj);
+
+  return obj;
 };
 
 Walkable.prototype.addPolyline = function(vertices, x, y) {
@@ -77,6 +77,12 @@ Walkable.prototype.addPolyline = function(vertices, x, y) {
   obj.set_x(x || 0);
   obj.set_y(y || 0);
   this.mesh.insertObject(obj);
+
+  return obj;
+};
+
+Walkable.prototype.deleteObstacle = function(obj) {
+  this.mesh.deleteObject(obj);
 };
 
 Walkable.prototype.findPath = function(fromX, fromY, toX, toY, radius) {
