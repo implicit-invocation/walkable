@@ -1,6 +1,6 @@
 {
   "name": "walkable",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Easy 2D polygonal pathfinding",
   "main": "index.js",
   "scripts": {

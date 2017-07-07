@@ -73,7 +73,6 @@ Walkable.prototype.addPolyline = function(vertices, x, y) {
     prevY = currY;
   }
 
-  console.log(coords);
   obj.set_coordinates(coords);
   obj.set_x(x || 0);
   obj.set_y(y || 0);
