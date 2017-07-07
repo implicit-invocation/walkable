@@ -40,10 +40,10 @@ Walkable.prototype.addPolygon = function(vertices, x, y) {
     prevY = vertices[vertices.length - 1];
 
   for (var i = 0; i < vertices.length; i += 2) {
-    var x = vertices[i], y = vertices[i + 1];
-    coords.push([prevX, prevY, x, y]);
-    prevX = x;
-    prevY = y;
+    var currX = vertices[i], currY = vertices[i + 1];
+    coords.push(prevX, prevY, currX, currY);
+    prevX = currX;
+    prevY = currY;
   }
 
   obj.set_coordinates(coords);
@@ -65,14 +65,15 @@ Walkable.prototype.addPolyline = function(vertices, x, y) {
   var prevX = 0, prevY = 0;
 
   for (var i = 0; i < vertices.length; i += 2) {
-    var x = vertices[i], y = vertices[i + 1];
+    var currX = vertices[i], currY = vertices[i + 1];
     if (i > 0) {
-      coords.push([prevX, prevY, x, y]);
+      coords.push(prevX, prevY, currX, currY);
     }
-    prevX = x;
-    prevY = y;
+    prevX = currX;
+    prevY = currY;
   }
 
+  console.log(coords);
   obj.set_coordinates(coords);
   obj.set_x(x || 0);
   obj.set_y(y || 0);
