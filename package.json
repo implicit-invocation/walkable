@@ -1,8 +1,9 @@
 {
   "name": "walkable",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Easy 2D polygonal pathfinding",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

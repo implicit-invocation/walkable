@@ -1,4 +1,4 @@
-var hxDaedalus = require('hxdaedalus-js').hxDaedalus;
+var hxDaedalus = require("hxdaedalus-js").hxDaedalus;
 
 var RectMesh = hxDaedalus.factories.RectMesh;
 var EntityAI = hxDaedalus.ai.EntityAI;
@@ -18,7 +18,7 @@ function Walkable(width, height) {
   this.path = [];
 }
 
-Walkable.prototype.addRect = function(w, h, x, y) {
+Walkable.prototype.addRect = function (w, h, x, y) {
   var obj = new DaedalusObject();
   obj.set_coordinates([0, 0, 0, h, 0, h, w, h, w, h, w, 0, w, 0, 0, 0]);
   obj.set_x(x);
@@ -28,9 +28,9 @@ Walkable.prototype.addRect = function(w, h, x, y) {
   return obj;
 };
 
-Walkable.prototype.addPolygon = function(vertices, x, y) {
+Walkable.prototype.addPolygon = function (vertices, x, y) {
   if (vertices.length < 6) {
-    console.log('Polygons must contain at least 3 points!');
+    console.log("Polygons must contain at least 3 points!");
     return;
   }
   var obj = new DaedalusObject();
@@ -40,7 +40,8 @@ Walkable.prototype.addPolygon = function(vertices, x, y) {
     prevY = vertices[vertices.length - 1];
 
   for (var i = 0; i < vertices.length; i += 2) {
-    var currX = vertices[i], currY = vertices[i + 1];
+    var currX = vertices[i],
+      currY = vertices[i + 1];
     coords.push(prevX, prevY, currX, currY);
     prevX = currX;
     prevY = currY;
@@ -54,18 +55,20 @@ Walkable.prototype.addPolygon = function(vertices, x, y) {
   return obj;
 };
 
-Walkable.prototype.addPolyline = function(vertices, x, y) {
+Walkable.prototype.addPolyline = function (vertices, x, y) {
   if (vertices.length < 4) {
-    console.log('Polylines must contain at least 2 points!');
+    console.log("Polylines must contain at least 2 points!");
     return;
   }
   var obj = new DaedalusObject();
   var coords = [];
 
-  var prevX = 0, prevY = 0;
+  var prevX = 0,
+    prevY = 0;
 
   for (var i = 0; i < vertices.length; i += 2) {
-    var currX = vertices[i], currY = vertices[i + 1];
+    var currX = vertices[i],
+      currY = vertices[i + 1];
     if (i > 0) {
       coords.push(prevX, prevY, currX, currY);
     }
@@ -81,11 +84,11 @@ Walkable.prototype.addPolyline = function(vertices, x, y) {
   return obj;
 };
 
-Walkable.prototype.deleteObstacle = function(obj) {
+Walkable.prototype.deleteObstacle = function (obj) {
   this.mesh.deleteObject(obj);
 };
 
-Walkable.prototype.findPath = function(fromX, fromY, toX, toY, radius) {
+Walkable.prototype.findPath = function (fromX, fromY, toX, toY, radius) {
   this.entity.set_radius(radius);
   this.entity.x = fromX;
   this.entity.y = fromY;
@@ -95,4 +98,4 @@ Walkable.prototype.findPath = function(fromX, fromY, toX, toY, radius) {
   return this.path;
 };
 
-module.exports = Walkable;
+exports.default = Walkable;
