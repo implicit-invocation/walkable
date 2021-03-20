@@ -12,6 +12,6 @@ export default class Walkable {
     toX: number,
     toY: number,
     radius: number,
-    path: number[] | undefined
+    path?: number[]
   ): number[];
 }

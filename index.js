@@ -99,4 +99,4 @@ Walkable.prototype.findPath = function (fromX, fromY, toX, toY, radius, path) {
   return path;
 };
 
-exports.default = Walkable;
+module.exports = Walkable;
