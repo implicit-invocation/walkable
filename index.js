@@ -88,14 +88,15 @@ Walkable.prototype.deleteObstacle = function (obj) {
   this.mesh.deleteObject(obj);
 };
 
-Walkable.prototype.findPath = function (fromX, fromY, toX, toY, radius) {
+Walkable.prototype.findPath = function (fromX, fromY, toX, toY, radius, path) {
+  if (path === undefined) path = this.path;
   this.entity.set_radius(radius);
   this.entity.x = fromX;
   this.entity.y = fromY;
 
-  this.pathFinder.findPath(toX, toY, this.path);
+  this.pathFinder.findPath(toX, toY, path);
 
-  return this.path;
+  return path;
 };
 
 exports.default = Walkable;
